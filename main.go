@@ -3,7 +3,8 @@ package main
 import "fmt"
 
 func main() {
-	var chosenUndead WarriorOfSunlight = &Undead{"Solaire"}
+	var chosenUndead WarriorOfSunlight = Undead{"Solaire"}
+	fmt.Printf("%s\n", chosenUndead)
 	fmt.Printf("%s\n", chosenUndead.PraiseTheSun())
 }
 
@@ -18,6 +19,11 @@ type Undead struct {
 }
 
 // PraiseTheSun is an action that the Undead do as they are warrriors of sunlight
-func (c *Undead) PraiseTheSun() string {
+func (c Undead) PraiseTheSun() string {
 	return fmt.Sprint("\\[T]/ PRAISE THE SUN \\[T]/")
+}
+
+// Implementation of the String interface on the Undead struct
+func (c Undead) String() string {
+	return fmt.Sprintf("%s-->", c.name)
 }
